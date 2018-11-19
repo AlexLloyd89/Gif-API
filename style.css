@@ -1,0 +1,43 @@
+body {
+  /* background-image: url("dark.jpg"); 
+  background-size: cover; */
+  background: #252525;
+  font-family: "Raleway", sans-serif;
+}
+
+.contain {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 960px;
+  height: 200px;
+}
+
+.header {
+  color: white;
+  font-size: 100px;
+  text-align: center;
+}
+
+.instructions {
+  color: #accfc4;
+  font-size: 20px;
+  text-align: center;
+}
+
+input {
+  font-size: 80px;
+  outline: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 2px solid rgb(29, 122, 94);
+  background: #252525;
+  color: #939997;
+  width: 100%;
+  text-shadow: 1px 1px 5px rgb(70, 243, 191, 0.54);
+  font-family: "Raleway", sans-serif;
+}
