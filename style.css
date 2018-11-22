@@ -1,10 +1,16 @@
 body {
-  /* background-image: url("dark.jpg"); 
-  background-size: cover; */
   background: #252525;
-  font-family: "Raleway", sans-serif;
 }
 
+.top-gif {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+}
+
+#searched-for {
+  flex-direction: column;
+}
 .contain {
   position: absolute;
   margin: auto;
@@ -22,13 +28,22 @@ body {
   text-align: center;
 }
 
-.instructions {
+input[type="submit"] {
   color: #accfc4;
+  text-shadow: 0px 0px 2px #3dd08c;
   font-size: 20px;
   text-align: center;
+  background: #252525;
+  outline: 0;
+  margin: 0 auto;
+  border: none;
+  font-family: "Raleway", sans-serif;
 }
 
-input {
+.instructions {
+  display: flex;
+}
+input[type="text"] {
   font-size: 80px;
   outline: 0;
   border-left: none;
@@ -38,6 +53,17 @@ input {
   background: #252525;
   color: #939997;
   width: 100%;
-  text-shadow: 1px 1px 5px rgb(70, 243, 191, 0.54);
+  text-shadow: 1px 1px 1px grey;
   font-family: "Raleway", sans-serif;
+}
+button {
+  outline: none;
+  color: teal;
+  background-color: darkgrey;
+  border-radius: 12px;
+  box-shadow: 1px 1px 1px black;
+  font-size: 15px;
+  margin: 5px;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
 }

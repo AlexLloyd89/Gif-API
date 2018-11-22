@@ -15,6 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
+    <div class="top-gif"><div id="searched-for"></div></div>
     <div class="contain">
       <!-- Holder for dynamic buttton generation -->
       <div id="searched-for"></div>
@@ -23,16 +24,20 @@
         <div class="bigbar">
           <input
             type="text"
-            id="search"
             name="search"
             class="search"
             placeholder="Search"
           />
         </div>
+        <div class="instructions">
+          <input
+            type="submit"
+            id="submit"
+            value="Click Here To Search For A New Gif!"
+          />
+        </div>
       </form>
-      <div class="instructions">Search for a new gif above!</div>
       <!-- Gifs go here -->
-
       <div class="gif-view"></div>
     </div>
     <!-- JavaScript -->
