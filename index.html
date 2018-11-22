@@ -11,14 +11,11 @@
       href="https://fonts.googleapis.com/css?family=Raleway"
       rel="stylesheet"
     />
-    <!-- JQUERY -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
-    <div class="top-gif"><div id="searched-for"></div></div>
     <div class="contain">
-      <!-- Holder for dynamic buttton generation -->
-      <div id="searched-for"></div>
+      <!-- Gifs go here -->
+      <div class="gif-view"></div>
       <!-- Search Bar -->
       <form>
         <div class="bigbar">
@@ -33,13 +30,15 @@
           <input
             type="submit"
             id="submit"
-            value="Click Here To Search For A New Gif!"
+            value="Click a button below to display 5 random GIFs. Generate a new button by entering a new search term into the bar above."
           />
         </div>
       </form>
-      <!-- Gifs go here -->
-      <div class="gif-view"></div>
+      <!-- Holder for dynamic buttton generation -->
+      <div class="top-gif"><div id="searched-for"></div></div>
     </div>
+    <!-- JQUERY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- JavaScript -->
     <script type="text/javascript" src="script.js"></script>
   </body>

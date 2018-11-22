@@ -1,52 +1,94 @@
-var gifs = [];
+$(document).ready(function() {
+  //Inital buttons to be displayed
+  var gifs = [
+    "Final Fantasy",
+    "Mass Effect",
+    "Bioshock",
+    "Overwatch",
+    "The Witcher",
+    "Super Mario World"
+  ];
 
-function displayGifs() {
-  var gif = $(this).attr("data-name");
-  //Change out for GIFY API!!!
-  /*var queryURL =
-    "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+  function displayGifs() {
+    var searchedTerm = $(this).attr("data-name");
+    var queryURL =
+      "https://api.giphy.com/v1/gifs/search?q=" +
+      searchedTerm +
+      "&api_key=fCwmyJXMcCEV9eY9JRLltEhBBhIbBIlg&limit=5";
+    //ajax call for whatever the user searched for
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      //Clears the area where the gifs are shown
+      $(".gif-view").empty();
 
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    $("#movies-view").text(JSON.stringify(response));
-  }); */
-}
+      var results = response.data;
 
-function renderButtons() {
-  $("#searched-for").empty();
+      for (var i = 0; i < results.length; i++) {
+        var gifDiv = $("<div>");
+        gifDiv.addClass("gif-picture");
 
-  // Looping through the array of movies
-  for (var i = 0; i < gifs.length; i++) {
-    var a = $("<button>");
+        var gifImage = $("<img>");
+        gifImage.attr("src", results[i].images.fixed_height_still.url);
+        gifImage.attr("data-still", results[i].images.fixed_height_still.url);
+        gifImage.attr("data-animate", results[i].images.fixed_height.url);
+        gifImage.attr("data-state", "still");
+        gifImage.addClass("gif-image");
+        //displays gif
+        gifDiv.prepend(gifImage);
+        $(".gif-view").prepend(gifDiv);
+      }
 
-    a.addClass("gif");
-    // Adding a data-attribute
-    a.attr("data-name", gifs[i]);
-    // Providing the initial button text
-    a.text(gifs[i]);
-    // Adding the button to the buttons-view div
-    $("#searched-for").append(a);
+      $(".gif-image").on("click", function() {
+        var state = $(this).attr("data-state");
+        console.log(state);
+
+        if (state === "still") {
+          $(this).attr("src", $(this).attr("data-animate"));
+          $(this).attr("data-state", "animate");
+        } else {
+          $(this).attr("src", $(this).attr("data-still"));
+          $(this).attr("data-state", "still");
+        }
+      });
+    });
   }
-}
 
-$("#submit").on("click", function(event) {
-  event.preventDefault();
+  function renderButtons() {
+    $("#searched-for").empty();
 
-  // This line grabs the input from the textbox
-  var gif = $(".search")
-    .val()
-    .trim();
+    // Looping through the array of gifs
+    for (var i = 0; i < gifs.length; i++) {
+      var a = $("<button>");
 
-  // Adding the movie from the textbox to our array
-  gifs.push(gif);
-  console.log(gifs);
+      a.addClass("gif");
+      // Adding a data-attribute
+      a.attr("data-name", gifs[i]);
+      // Providing the initial button text
+      a.text(gifs[i]);
+      // Adding the button to the searched-for div
+      $("#searched-for").append(a);
+    }
+  }
 
-  // Calling renderButtons which handles the processing of our movie array
+  $("#submit").on("click", function(event) {
+    event.preventDefault();
+
+    // This line grabs the input from the textbox
+    var gif = $(".search")
+      .val()
+      .trim();
+
+    // Adding the movie from the textbox to our array
+    gifs.push(gif);
+
+    // Calling renderButtons which handles the processing of our movie array
+    renderButtons();
+  });
+
+  $(document).on("click", ".gif", displayGifs);
+
+  // Calling the renderButtons function to display the initial buttons
   renderButtons();
 });
-$(document).on("click", ".gif", displayGifs);
-
-// Calling the renderButtons function to display the initial buttons
-renderButtons();
