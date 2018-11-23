@@ -29,6 +29,9 @@ $(document).ready(function() {
         var gifDiv = $("<div>");
         gifDiv.addClass("gif-picture");
 
+        var rating = results[i].rating;
+        var rateThis = $("<h2>").text("Rating: " + rating);
+
         var gifImage = $("<img>");
         gifImage.attr("src", results[i].images.fixed_height_still.url);
         gifImage.attr("data-still", results[i].images.fixed_height_still.url);
@@ -36,6 +39,7 @@ $(document).ready(function() {
         gifImage.attr("data-state", "still");
         gifImage.addClass("gif-image");
         //displays gif
+        gifDiv.prepend(rateThis);
         gifDiv.prepend(gifImage);
         $(".gif-view").prepend(gifDiv);
       }
