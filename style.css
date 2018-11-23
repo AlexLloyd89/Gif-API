@@ -122,3 +122,9 @@ button {
   font-weight: bold;
   padding: 7px;
 }
+
+button:hover {
+  color: #ffffff;
+  box-shadow: 0px 0px 8px #00ffd5;
+  border: 1px solid #30c497;
+}
