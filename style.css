@@ -54,7 +54,7 @@ header {
   color: white;
   background-color: #1d7a5e;
   font-size: 50px;
-  text-shadow: 1px 1px 1px black;
+  text-shadow: 2px 2px 2px black;
   font-family: "Raleway", sans-serif;
   height: 100px;
   width: 100%;
@@ -127,4 +127,11 @@ button:hover {
   color: #ffffff;
   box-shadow: 0px 0px 8px #00ffd5;
   border: 1px solid #30c497;
+}
+
+h2 {
+  position: absolute;
+  bottom: -12%;
+  color: #757575;
+  text-shadow: 1px 1px 1px black;
 }
