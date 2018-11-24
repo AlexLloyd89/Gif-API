@@ -4,7 +4,7 @@ $(document).ready(function() {
     "Final Fantasy",
     "Mass Effect",
     "Bioshock",
-    "Overwatch",
+    "Pokemon",
     "The Witcher",
     "Super Mario World"
   ];
@@ -14,7 +14,7 @@ $(document).ready(function() {
     var queryURL =
       "https://api.giphy.com/v1/gifs/search?q=" +
       searchedTerm +
-      "&api_key=fCwmyJXMcCEV9eY9JRLltEhBBhIbBIlg&limit=5";
+      "&api_key=fCwmyJXMcCEV9eY9JRLltEhBBhIbBIlg&limit=30";
     //ajax call for whatever the user searched for
     $.ajax({
       url: queryURL,
@@ -24,18 +24,30 @@ $(document).ready(function() {
       $(".gif-view").empty();
 
       var results = response.data;
+      var random = [];
 
-      for (var i = 0; i < results.length; i++) {
+      do {
+        var item = results[Math.floor(Math.random() * results.length)];
+        if (!random.includes(item)) {
+          random.push(item);
+          console.log(`The current array has ${random.length} items`);
+        } else {
+          console.log(`${item.title} is already in the array`);
+        }
+      } while (random.length < 5);
+
+      for (var i in random) {
+        let item = random[i];
+        console.log(item.title);
         var gifDiv = $("<div>");
         gifDiv.addClass("gif-picture");
 
-        var rating = results[i].rating;
-        var rateThis = $("<h2>").text("Rating: " + rating);
+        var rateThis = $("<h2>").text("Rating: " + item.rating);
 
         var gifImage = $("<img>");
-        gifImage.attr("src", results[i].images.fixed_height_still.url);
-        gifImage.attr("data-still", results[i].images.fixed_height_still.url);
-        gifImage.attr("data-animate", results[i].images.fixed_height.url);
+        gifImage.attr("src", item.images.fixed_height_still.url);
+        gifImage.attr("data-still", item.images.fixed_height_still.url);
+        gifImage.attr("data-animate", item.images.fixed_height.url);
         gifImage.attr("data-state", "still");
         gifImage.addClass("gif-image");
         //displays gif
@@ -62,14 +74,14 @@ $(document).ready(function() {
     $("#searched-for").empty();
 
     // Looping through the array of gifs
-    for (var i = 0; i < gifs.length; i++) {
+    for (var gif in gifs) {
       var a = $("<button>");
 
       a.addClass("gif");
       // Adding a data-attribute
-      a.attr("data-name", gifs[i]);
+      a.attr("data-name", gifs[gif]);
       // Providing the initial button text
-      a.text(gifs[i]);
+      a.text(gifs[gif]);
       // Adding the button to the searched-for div
       $("#searched-for").append(a);
     }
