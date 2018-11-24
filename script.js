@@ -46,7 +46,6 @@ $(document).ready(function() {
 
       $(".gif-image").on("click", function() {
         var state = $(this).attr("data-state");
-        console.log(state);
 
         if (state === "still") {
           $(this).attr("src", $(this).attr("data-animate"));

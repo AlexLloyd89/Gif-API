@@ -52,13 +52,52 @@ body {
 header {
   position: relative;
   color: white;
-  background-color: #1d7a5e;
+  background: linear-gradient(90deg, #175a3f, #541349);
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 20s ease infinite;
+  -moz-animation: AnimationName 20s ease infinite;
+  animation: AnimationName 20s ease infinite;
+
   font-size: 50px;
   text-shadow: 2px 2px 2px black;
   font-family: "Raleway", sans-serif;
   height: 175px;
   width: 100%;
   padding: 20px;
+}
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 51%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 51%;
+  }
+}
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 51%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 51%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 51%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 51%;
+  }
 }
 
 header:after {
